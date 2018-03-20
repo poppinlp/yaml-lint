@@ -15,7 +15,7 @@
   "bugs": {
     "url": "https://github.com/rasshofer/yaml-lint/issues"
   },
-  "main": "yaml-lint.js",
+  "main": "src/linter.js",
   "keywords": [
     "yaml",
     "lint",
@@ -23,23 +23,25 @@
     "cli"
   ],
   "dependencies": {
+    "cosmiconfig": "^4.0.0",
     "glob": "^7.1.2",
     "js-yaml": "^3.11.0",
     "leprechaun": "0.0.2",
     "lodash.merge": "^4.6.1",
     "lodash.snakecase": "^4.1.1",
-    "nconf": "^0.10.0"
+    "nconf": "^0.10.0",
+    "yargs": "^11.0.0"
   },
   "devDependencies": {
-    "eslint": "^4.18.2",
-    "tap": "^11.1.1"
+    "eslint": "^4.19.0",
+    "tap": "^11.1.2"
   },
   "scripts": {
     "lint": "eslint .",
-    "test": "npm run lint && tap test/*.js --cov"
+    "test": "npm run lint && tap tests/*.js --cov"
   },
   "preferGlobal": true,
   "bin": {
-    "yamllint": "cli.js"
+    "yamllint": "bin/cli.js"
   }
 }

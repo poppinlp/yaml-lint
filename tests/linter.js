@@ -1,12 +1,10 @@
 const path = require("path");
 const tap = require("tap");
-const yamlLint = require("../yaml-lint");
+const yamlLint = require("../src/linter");
 
-const VALID_FILE = path.join(__dirname, "valid.yaml");
-const INVALID_FILE = path.join(__dirname, "invalid.yaml");
-const MISSING_FILE = path.join(__dirname, "missing.yaml");
-
-// LINTER
+const VALID_FILE = path.join(__dirname, "yamls/valid.yaml");
+const INVALID_FILE = path.join(__dirname, "yamls/invalid.yaml");
+const MISSING_FILE = path.join(__dirname, "yamls/missing.yaml");
 
 tap.equal(typeof yamlLint, "object");
 tap.equal(typeof yamlLint.lint, "function");

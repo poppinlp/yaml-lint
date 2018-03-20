@@ -3,29 +3,14 @@
 "use strict";
 
 const path = require('path');
-const nconf = require('nconf');
 const leprechaun = require('leprechaun');
-const snakeCase = require('lodash.snakecase');
 const glob = require('glob');
-const yamlLint = require('./yaml-lint');
+const yamlLint = require('../src/yaml-lint');
+const optionHelper = require('../src/option');
+const poolHelper = require('../src/pool');
 
-const options = {};
-
-nconf.argv().env({
-  match: /^yamllint/i
-}).file({
-  file: path.resolve(process.cwd(), '.yaml-lint.json')
-});
-
-[
-  'schema',
-  'ignore'
-].forEach((key) => {
-  const env = snakeCase(key);
-  options[key] = nconf.get(key) || nconf.get(`yamllint_${env.toLowerCase()}`) || nconf.get(`YAMLLINT_${env.toUpperCase()}`);
-});
-
-const config = nconf.get();
+const options = optionHelper();
+const files = poolHelper();
 
 let files = [];
 
